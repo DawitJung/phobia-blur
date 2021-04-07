@@ -1,4 +1,10 @@
+let timer;
+
 function blur() {
+  if (timer) return;
+  timer = setTimeout(() => {
+    timer = null;
+  }, 10000);
   chrome.storage.sync.get("words", ({ words }) => {
     const xpath =
       "/html/body//*[" +
@@ -25,14 +31,7 @@ function blur() {
     const nodes = [];
     let thisNode = iterator.iterateNext();
     while (thisNode) {
-      if (
-        getComputedStyle(thisNode).display.startsWith("inline") &&
-        thisNode.parentElement
-      ) {
-        nodes.push(thisNode.parentElement);
-      } else {
-        nodes.push(thisNode);
-      }
+      nodes.push(thisNode);
       thisNode = iterator.iterateNext();
     }
     for (const node of nodes) {
@@ -44,6 +43,7 @@ function blur() {
 }
 
 function toggleBlur(event) {
+  event.stopPropagation();
   if (this.classList.contains("__ptsd-show")) {
     this.classList.remove("__ptsd-show");
   } else {
@@ -53,6 +53,10 @@ function toggleBlur(event) {
 }
 
 const observer = new MutationObserver(blur);
+
+window.addEventListener("popstate", blur);
+
+window.addEventListener("load", blur);
 
 observer.observe(document.querySelector("body"), {
   attributes: false,

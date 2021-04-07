@@ -1,19 +1,15 @@
 .__ptsd-hide {
-  filter: blur(0.2em);
+  filter: blur(3px);
   cursor: pointer;
   opacity: 0.75;
+}
+.__ptsd-show {
+  filter: blur(0) !important;
   transition-property: filter;
   transition-duration: 200ms;
 }
-img.__ptsd-hide {
-  filter: blur(10px);
-}
-.__ptsd-show {
-  filter: blur(0em) !important;
-}
-img.__ptsd-hide:hover {
-  filter: blur(5px);
-}
 .__ptsd-hide:hover {
-  filter: blur(0.15em);
+  filter: blur(2px);
+  transition-property: filter;
+  transition-duration: 200ms;
 }
