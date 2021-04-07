@@ -54,12 +54,13 @@ function toggleBlur(event) {
 
 const observer = new MutationObserver(blur);
 
-window.addEventListener("popstate", blur);
-
-window.addEventListener("load", blur);
-
-observer.observe(document.querySelector("body"), {
-  attributes: false,
-  childList: true,
-  subtree: true,
+window.addEventListener("load", () => {
+  observer.disconnect();
+  if (!new URL(window.location.href).host.includes("youtube.com")) {
+    observer.observe(document.querySelector("body"), {
+      attributes: false,
+      childList: true,
+      subtree: true,
+    });
+  }
 });
