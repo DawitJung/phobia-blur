@@ -1,7 +1,7 @@
 const wordsEl = document.getElementById("words");
 
 chrome.storage.sync.get("words", ({ words }) => {
-  wordsEl.value = words;
+  wordsEl.value = (words || "").trim();
 });
 
 wordsEl.addEventListener("input", function () {
