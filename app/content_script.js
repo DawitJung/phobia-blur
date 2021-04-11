@@ -1,7 +1,7 @@
 let timer;
 
 function blur() {
-  if (timer) return;
+  if (!chrome.app.isInstalled && timer) return;
   timer = setTimeout(() => {
     timer = null;
   }, 10000);
