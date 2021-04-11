@@ -2,15 +2,12 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <style>
-    textarea {
-      resize: none;
-    }
-  </style>
+  <link rel="stylesheet" href="./popup.css">
 </head>
 <body>
-  <textarea name="words" id="words" cols="30" rows="10"></textarea>
-  <p>가리고 싶은 단어를 띄어쓰기, 줄바꿈으로 구분하여 나열해주세요.</p>
+  <h1>Phobia Blur</h1>
+  <ul id="word-list"></ul>
+  <input type="text" name="word-input" id="word-input" disabled></input>
   <script src="popup.js"></script>
 </body>
 </html>

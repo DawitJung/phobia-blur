@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  width: 300px;
+}
+h1 {
+  font-size: 1.5rem;
+  margin: 10px;
+}
+#word-list {
+  margin: 10px;
+  margin-top: 5px;
+  display: block;
+  list-style: none;
+}
+#word-list > li {
+  display: inline-block;
+  background-color: #bb5099;
+  color: #ffffff;
+  padding: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#word-input {
+  margin: 10px;
+  margin-top: 0;
+  border: 1px solid #bb5099;
+  border-radius: 5px;
+  width: calc(100% - 30px);
+  padding: 5px;
+}

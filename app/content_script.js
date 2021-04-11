@@ -5,11 +5,11 @@ function blur() {
   timer = setTimeout(() => {
     timer = null;
   }, 10000);
-  chrome.storage.sync.get("words", ({ words }) => {
+  chrome.storage.sync.get("words", ({ words = [] }) => {
+    if (words.length < 1) return;
     const xpath =
       "/html/body//*[" +
       words
-        .split(/[\s]/)
         .filter(w => w)
         .reduce((acc, cur) => {
           acc.push(cur);
@@ -40,15 +40,14 @@ function blur() {
       node.addEventListener("click", toggleBlur);
     }
   });
-}
-
-function toggleBlur(event) {
-  event.stopPropagation();
-  if (this.classList.contains("__ptsd-show")) {
-    this.classList.remove("__ptsd-show");
-  } else {
-    event.preventDefault();
-    this.classList.add("__ptsd-show");
+  function toggleBlur(event) {
+    event.stopPropagation();
+    if (this.classList.contains("__ptsd-show")) {
+      this.classList.remove("__ptsd-show");
+    } else {
+      event.preventDefault();
+      this.classList.add("__ptsd-show");
+    }
   }
 }
 
